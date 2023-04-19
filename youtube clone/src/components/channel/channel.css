@@ -1,0 +1,120 @@
+.channel-container {
+  width: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+.channel-show {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.banner {
+  height: 60%;
+  display: flex;
+  background-image: linear-gradient(to left, orange, green);
+}
+.banner .slide img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+.artist-info {
+  height: 40%;
+  display: flex;
+  justify-content: space-around;
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+}
+.artist-info img {
+  width: 100px;
+  height: 150px;
+  border-radius: 50%;
+  padding: 1rem 0;
+}
+.info-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.info-text h2 {
+  font-size: 2rem;
+  line-height: 50px;
+  font-family: "Times New Roman", Times, serif;
+}
+.info-text pre {
+  font-size: 1.4rem;
+  line-height: 35px;
+}
+.links {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.links a {
+  width: 70px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.links a img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  padding: 0;
+}
+.links a p {
+  font-size: 0.7rem;
+}
+.channel-show button {
+  width: 50px;
+  height: 20px;
+  border: 2px solid red;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.channel-videos {
+  width: 100%;
+  display: grid;
+  min-height: calc(100vh - 15vh);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #000;
+  overflow: hidden;
+}
+.channel-video {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 10px;
+  /* border: 2px solid rgba(243, 239, 239, 0.635); */
+}
+.channel-video img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.channel-video h2 {
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  text-transform: capitalize;
+  margin-top: 0.5rem;
+}
+.channel-video h3 {
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+}
+.channel-video pre {
+  font-size: 1.1rem;
+  padding: 0 0.5rem;
+}

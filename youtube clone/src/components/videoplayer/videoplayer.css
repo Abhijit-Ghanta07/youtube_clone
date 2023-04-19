@@ -1,0 +1,7 @@
+.videoplayer {
+  height: 80vh;
+}
+.videoplayer div {
+  width: 100% !important;
+  height: 100% !important;
+}
