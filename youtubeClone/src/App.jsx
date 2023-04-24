@@ -13,8 +13,8 @@ function App() {
           <Header />
           <Sidebar />
           <Routes>
-            <Route path="/" element=<VideoList /> />
-            <Route path="/register" element=<Auth /> />
+            <Route path="/" element={<VideoList />} />
+            <Route path="/register" element={<Auth />} />
             <Route path="/channel/details/:id" element={<Channel />} />
             {/* <Route path="/videos/:id" element={<Channel />} /> */}
             <Route path="/video/play/:videoid" element={<Videoplayer />} />

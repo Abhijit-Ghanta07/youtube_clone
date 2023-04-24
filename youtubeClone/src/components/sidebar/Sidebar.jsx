@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import List from "./List";
 import "./sidebar.css";
 import catagories from "../../constants/Constant";

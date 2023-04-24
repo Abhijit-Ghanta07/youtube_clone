@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useStore } from "../../context/zustand";
 import Video from "./Video";
 import "./videolist.css";
 const VideoList = () => {
   let query = "search/?q=random videos";
-  const { Data, getData, loading } = useStore();
+  const { Data, getData } = useStore();
   const [apiData, setApiData] = useState({});
   const memoGetData = useMemo(() => {
     if (Data.length === 0) {

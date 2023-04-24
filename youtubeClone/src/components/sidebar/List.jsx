@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 const List = ({ name, icon }) => {
   const navlink = useRef();
   useEffect(() => {}, [name]);
   return (
     <div ref={navlink} className="list-item">
-      <p>{icon}</p>
+      <p>hello</p>
       <p
         onClick={(e) => {
           console.log(e.target);
