@@ -5,7 +5,10 @@ import Header from "./components/header/Header";
 import VideoList from "./components/videoList/VideoList";
 import Videoplayer from "./components/videoplayer/Videoplayer";
 import Sidebar from "./components/sidebar/Sidebar";
+import Protected from "./auth/Auth";
+import { useState } from "react";
 function App() {
+  const [user, setUser] = useState(false);
   return (
     <>
       <BrowserRouter>
@@ -13,7 +16,14 @@ function App() {
           <Header />
           <Sidebar />
           <Routes>
-            <Route path="/" element={<VideoList />} />
+            <Route
+              path="/"
+              element={
+                <Protected user>
+                  <VideoList />
+                </Protected>
+              }
+            />
             <Route path="/register" element={<Auth />} />
             <Route path="/channel/details/:id" element={<Channel />} />
             {/* <Route path="/videos/:id" element={<Channel />} /> */}
