@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useStore } from "../../context/zustand";
+import useStore from "../../context/zustand";
 import Video from "./Video";
 import "./videolist.css";
 const VideoList = () => {

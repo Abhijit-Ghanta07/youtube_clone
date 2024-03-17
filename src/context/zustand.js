@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import FetchData from "../api/Api";
 
-export const useStore = create((set) => ({
+const useUserStore = create((set) => ({
   Data: [],
   userInfo: [],
   videoId: "",
@@ -44,3 +44,5 @@ export const useStore = create((set) => ({
     set({ channelPlaylist: channelPlaylist });
   },
 }));
+
+export default useUserStore;

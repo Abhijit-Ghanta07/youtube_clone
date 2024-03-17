@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useStore } from "../../context/zustand";
+import useStore from "../../context/zustand";
 import { useParams } from "react-router-dom";
 import "./channel.css";
 import ChannelShow from "./ChannelShow";

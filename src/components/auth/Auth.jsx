@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./auth.css";
-import { useStore } from "../../context/zustand";
+import UseUserStore from "../../context/zustand";
 import { useNavigate } from "react-router-dom";
 const Auth = () => {
   const navigate = useNavigate();
-  const { getUserInfo } = useStore();
+  const { getUserInfo } = UseUserStore();
   const [user, setUser] = useState({
     name: "",
     password: "",
