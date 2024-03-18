@@ -3,12 +3,10 @@ import { useParams } from "react-router-dom";
 import "./videoplayer.css";
 function Videoplayer() {
   const { videoid } = useParams();
+  let url = `https://www.youtube.com/watch?v=${videoid}`;
   return (
     <div className="videoplayer">
-      <ReactPlayer
-        url={`https://www.youtube.com/watch?v=${videoid}`}
-        controls={true}
-      />
+      <ReactPlayer url={url} controls={true} />
     </div>
   );
 }

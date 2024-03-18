@@ -1,12 +1,12 @@
 import React from "react";
-import { useGetData } from "../api/Api";
-import useDataStore from "../context/DataContext.js";
+import { useFetchData } from "../api/Api";
+import { useDataStore } from "../context/Context";
 
 const GetData = () => {
-  const { data } = useGetData("search/?q=cartoons");
-  const storeData = useDataStore((store) => store.getData);
+  const { data, err, loading } = useFetchData("search/?q=cartoons");
+  const storeData = useDataStore((store) => store.setData);
   if (data !== null) {
-    storeData(data);
+    storeData(data?.contents);
   }
 
   return <></>;

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./channel.css";
 import { useEffect, useState } from "react";
 const ChannelShow = ({ details, videos, playlist }) => {
@@ -14,15 +14,6 @@ const ChannelShow = ({ details, videos, playlist }) => {
   useEffect(() => {
     setartistName(artist?.title);
   }, [artist]);
-  function handleClick(e) {
-    navigate(`/video/play/${e}`);
-  }
-  useEffect(() => {
-    if (id === "") {
-      return;
-    }
-    handleClick(id);
-  }, [id]);
   return (
     <>
       <div className="channel-show">
@@ -51,12 +42,10 @@ const ChannelShow = ({ details, videos, playlist }) => {
           <div className="links">
             {artist?.links.map((link) => {
               return (
-                <>
-                  <a href={link?.targetUrl} target="_blank">
-                    <img src={link.icon} alt="" />
-                    <p>{link?.title}</p>
-                  </a>
-                </>
+                <Link to={link?.targetUrl} target="_blank">
+                  <img src={link.icon} alt="" />
+                  <p>{link?.title}</p>
+                </Link>
               );
             })}
           </div>
@@ -67,13 +56,10 @@ const ChannelShow = ({ details, videos, playlist }) => {
           return (
             <>
               <div className="channel-video" key={index}>
-                <img
-                  src={item.video?.thumbnails[0]?.url}
-                  alt="thumb"
-                  onClick={() => {
-                    setId(item?.video?.videoId);
-                  }}
-                />
+                <Link to={`/video/play/${item?.video?.videoId}`}>
+                  <img src={item.video?.thumbnails[0]?.url} alt="thumb" />
+                </Link>
+
                 <h2>{item.video?.title}</h2>
                 <h3>{artistName}</h3>
                 <pre>

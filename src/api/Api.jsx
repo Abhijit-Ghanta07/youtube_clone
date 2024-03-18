@@ -11,8 +11,8 @@ const config = {
     "X-RapidAPI-Host": `${url}`,
   },
 };
-
-export const useGetData = (path) => {
+// hook fetchData
+const useFetchData = (path) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
@@ -27,7 +27,7 @@ export const useGetData = (path) => {
           ...config,
           signal: abortController.signal,
         });
-        setData(data?.contents);
+        setData(data);
       } catch (err) {
         setErr(true);
       } finally {
@@ -52,4 +52,4 @@ async function FetchData(query = "", signal = "") {
   });
   return data;
 }
-export default FetchData;
+export { useFetchData, FetchData };

@@ -11,7 +11,7 @@ const useUserStore = create((set) => ({
   userImage: undefined,
   loading: false,
   prevSearch: "",
-  DeleteUser: () => set({ userInfo: "" }),
+  DeleteUser: () => set((state) => ({ ...state, userInfo: "" })),
   getUserFromLocal: () => {
     if ("username" in localStorage && "password" in localStorage) {
       const user = {

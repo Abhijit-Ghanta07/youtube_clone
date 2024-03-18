@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./videolist.css";
 const Video = ({ video }) => {
-  const navigate = useNavigate();
   if (video.type === "video") {
     const {
       video: {
@@ -14,20 +13,16 @@ const Video = ({ video }) => {
         author: { title: authorName, avatar, channelId, canonicalBaseUrl },
       },
     } = video;
-    function handleClick(id) {
-      navigate(`/channel/details/${id}`);
-    }
-    function imgClick(params) {
-      navigate(`/video/play/${videoId}`);
-    }
     return (
       <div className="video">
-        <img src={thumbnails[0]?.url} alt="thumb" onClick={imgClick} />
+        <Link to={`/video/play/${videoId}`}>
+          <img src={thumbnails[0]?.url} alt="thumb" />
+        </Link>
         <h2>{title}</h2>
-        <div className="channel" onClick={() => handleClick(channelId)}>
+        <Link className="channel" to={`/channel/details/${channelId}`}>
           <img src={avatar[0]?.url} alt="author" />
           <p>{authorName}</p>
-        </div>
+        </Link>
         <pre>
           {views}views . {publishedTimeText}
         </pre>

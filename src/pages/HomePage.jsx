@@ -9,7 +9,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Container>
+      <Container fluid="xl">
         <Row>
           <Col>This is home page</Col>
         </Row>

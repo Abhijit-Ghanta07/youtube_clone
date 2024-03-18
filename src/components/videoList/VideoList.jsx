@@ -1,24 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
-import useStore from "../../context/zustand";
+import { useDataStore } from "../../context/Context";
 import Video from "./Video";
 import "./videolist.css";
 const VideoList = () => {
-  let query = "search/?q=random videos";
-  const { Data, getData } = useStore();
-  const [apiData, setApiData] = useState({});
-  const memoGetData = useMemo(() => {
-    if (Data.length === 0) {
-      getData(query);
-    }
-  }, [query]);
-  useEffect(() => {
-    setApiData(Data?.data);
-  }, [Data]);
+  const storeData = useDataStore((store) => store.DATA);
 
   return (
     <div className="video-container">
       <div className="video-wrapper">
-        {apiData?.contents?.map((video, index) => (
+        {storeData?.map((video, index) => (
           <Video video={video} key={index} />
         ))}
       </div>
