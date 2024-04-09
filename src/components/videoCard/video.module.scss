@@ -2,7 +2,7 @@
 .videoCard {
   width: 11rem !important;
   padding: 0 !important;
-  border-radius: 10px !important;
+  border-radius: 5px !important;
   overflow: hidden;
   flex-grow: 1;
   background-color: #000 !important;
@@ -11,12 +11,13 @@
     width: 13rem !important;
   }
   &__title {
-    font-size: 0.9rem;
+    font-size: 0.8rem !important;
+    padding: 0.5rem 0;
   }
   &__img {
     width: 100%;
     height: fit-content;
-    border-radius: 10px 10px 0 0 !important;
+    border-radius: 5px 5px 0 0 !important;
     object-fit: contain;
     transition: 0.3s ease;
     &:hover {

@@ -5,7 +5,7 @@ import { VideoList } from "../components/index";
 import useFetch from "../hooks/useFetch";
 const Category = () => {
   const { category } = useParams();
-  const { data } = useFetch(`/search/?query=${category}`);
+  const { data } = useFetch(`search/?query=${category}`);
   return (
     <Container fluid>
       <VideoList Data={data?.videos} title={category} />

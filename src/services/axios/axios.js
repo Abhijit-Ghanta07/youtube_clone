@@ -8,6 +8,10 @@ const config = {
 };
 const axiosInt = axios.create({
   baseURL: url,
+  params: {
+    lang: "en",
+    country: "in",
+  },
   headers: {
     ...config,
   },

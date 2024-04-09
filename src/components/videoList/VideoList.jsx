@@ -4,8 +4,8 @@ import style from "./videolist.module.scss";
 import Title from "../titleCard/Title";
 const VideoList = ({ Data, title = "Featured" }) => {
   return (
-    <Container fluid className="p-0">
-      <Title name={`${title} Videos`} />
+    <Container fluid className="px-3">
+      <Title name={`${title.toLocaleUpperCase()}`} />
       <Row className={style.videoCard__wrapper}>
         {Data &&
           Data?.map((video, index) => <VideoCard video={video} key={index} />)}

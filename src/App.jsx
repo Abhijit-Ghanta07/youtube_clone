@@ -11,7 +11,8 @@ const AuthPage = lazy(() => import("./pages/AuthPage"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const ChannelPage = lazy(() => import("./pages/ChannelPage"));
 const VideoPage = lazy(() => import("./pages/VideoPage"));
-import { Loader, VideoPlayer } from "./components/index";
+const VideoPlayer = lazy(() => import("./pages/Videoplayer"));
+import { Loader } from "./components/index";
 import { Home, Category } from "./layouts/index";
 import GetData from "./data/GetData";
 

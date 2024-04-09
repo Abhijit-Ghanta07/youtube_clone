@@ -19,7 +19,6 @@
     padding: 1.4rem 0.7rem;
     overflow-y: auto;
     overflow-x: hidden;
-    border-right: 2px solid #fff;
     &::-webkit-scrollbar {
       width: 10px;
     }
@@ -63,4 +62,8 @@
   font-size: 0.7rem;
   font-weight: normal;
   color: #fff;
+}
+.red {
+  color: red;
+  font-weight: 600;
 }

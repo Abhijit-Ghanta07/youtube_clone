@@ -1,8 +1,6 @@
 import ReactPlayer from "react-player";
-import { useParams } from "react-router-dom";
 import "./videoplayer.css";
-function Videoplayer() {
-  const { id } = useParams();
+function Player({ id }) {
   let url = `https://www.youtube.com/watch?v=${id}`;
   return (
     <div className="videoplayer">
@@ -11,4 +9,4 @@ function Videoplayer() {
   );
 }
 
-export default Videoplayer;
+export default Player;

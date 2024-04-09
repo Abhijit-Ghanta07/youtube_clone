@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
 const useLoader = create((set, get) => ({
-  loaderStatus: false,
+  status: false,
 
-  startLoading: () => set({ loaderStatus: true }),
-  stopLoading: () => set({ loaderStatus: false }),
+  startLoading: () => set({ status: true }),
+  stopLoading: () => set({ status: false }),
 }));
 
 export default useLoader;

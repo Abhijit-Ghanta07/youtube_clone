@@ -9,7 +9,13 @@ const Sidebar = () => {
     <Container className={style.sidebar__con}>
       <Row>
         <Col>
-          <h3 className={style.logo}>logo</h3>
+          <h3 className={style.logo}>
+            <img src={"/images/logo.png"} alt="logo" />
+
+            <span>
+              Play<span className={style.red}>Tube</span>
+            </span>
+          </h3>
           <Stack gap={2} direction="vertical" className={style.flex__wrapper}>
             <Link to={"/"} className={style.sidebar__link}>
               <span>

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import fetchData from "../api/api";
+import fetchData from "../api/api.js";
 const useDataStore = create((set, get) => ({
   videoData: [],
 
