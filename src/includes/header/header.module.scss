@@ -1,149 +1,25 @@
-.header-container {
-  width: 100%;
-  height: 5rem;
-  background: linear-gradient(90deg, rgb(72, 18, 143), rgb(128, 19, 141));
-  display: none;
-}
-.header-wrapper {
-  height: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-.links {
-  width: 20%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.links a {
-  text-decoration: none;
-  display: block;
-  height: auto;
-  padding: 0.4rem;
-  text-transform: capitalize;
-  font-size: 1.2rem;
-  padding: 0.4rem;
-}
-.header-search {
-  width: 30%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.header-search label {
-  width: 100%;
-  height: 2rem;
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid rgba(255, 255, 255, 0.692);
-  border-radius: 25px;
-  align-items: center;
-  margin: 0 1rem;
-  padding: 0 0.5rem;
-}
-.header-search label input {
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  height: 100%;
-  background: transparent;
-  width: 80%;
-  color: #fff;
-}
-.header-search label input::placeholder {
-  text-transform: capitalize;
-}
-.header-search label svg {
-  fill: #fefefe;
-  cursor: pointer;
-}
-.mode {
-  width: 10%;
-  padding: 0.4rem;
-  border-radius: 5px;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  text-transform: capitalize;
-}
-.login-links {
-  width: 25%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.login-links a {
-  text-decoration: none;
-  font-size: 1.3rem;
-  text-transform: capitalize;
-  padding: 0.5rem;
-}
-.loading {
-  width: 100%;
-  height: 5px;
-  background: #ca0e0e;
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: bgChange 1s linear infinite alternate;
-  background-size: 300%;
-  background-position: 0 0;
-}
-.header-wrapper .user {
-  width: 20%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.header-wrapper .user .logo svg {
-  height: 35px;
-  width: 35px;
-  display: block;
-  cursor: pointer;
-}
-.header-wrapper .user p {
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-@keyframes bgChange {
-  0% {
-    background-position: 100%;
-    background-color: #ca0e0e;
-  }
-  50% {
-    background-position: 200%;
-    background-color: #ca850e;
-  }
-  100% {
-    background-position: 300%;
-    background-color: #37ca0e;
-  }
-}
-@media screen and (min-width: 680px) {
-  .header-container {
-    display: block;
-  }
+@import "../../sass//variable.scss";
 
-  .wrapper {
-    padding: 2rem 1rem;
-  }
-  .header-search form {
-    width: 70%;
+.header {
+  &__con {
+    background-color: $sidebar-bg;
+    padding: 0.5rem 1rem;
   }
 }
-.darkmode a {
-  color: #fff !important;
-}
-.lightmode a {
-  color: #000 !important;
+.inputBox {
+  background-color: $light;
+  border: 1px solid $light;
+  color: #000;
+  border-radius: 25px;
+  padding: 0 0.3rem;
+  display: flex;
+  align-items: center;
+  input {
+    @extend .inputBox;
+    border: 0;
+    padding: 0.3rem;
+  }
+  &:focus {
+    outline: none;
+  }
 }

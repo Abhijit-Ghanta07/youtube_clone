@@ -1,0 +1,66 @@
+@import "../../sass/variable.scss";
+.logo {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: $light;
+}
+.sidebar {
+  &__con {
+    box-sizing: border-box;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: $sidebar-bg;
+    padding: 1.4rem 0.7rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 2px solid #fff;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+  }
+  &__link {
+    padding: 0.5rem;
+    color: inherit;
+    padding: 0.5rem 0.7rem;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: capitalize;
+    color: $light;
+    font-weight: 500;
+    transition: 0.3s ease;
+    font-size: 0.9rem;
+    span {
+      height: fit-content;
+      color: $active;
+      transition: 0.3s ease;
+    }
+    &:hover {
+      background-color: $active;
+      span {
+        color: $light;
+      }
+    }
+    &__active {
+      @extend .sidebar__link;
+      color: #fff;
+      background-color: $active;
+    }
+  }
+}
+.flex__wrapper {
+  padding: 1rem;
+  padding-right: 0.5rem;
+}
+.right {
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: #fff;
+}

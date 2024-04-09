@@ -1,47 +1,39 @@
 import React, { useEffect, useState } from "react";
-import useUserStore from "../../context/zustand";
-import { Link } from "react-router-dom";
+import { Col, Container, Row, Stack } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
-import { BiUserCircle } from "react-icons/bi";
+import { useDataStore } from "../../services/store/store";
 // styles
 import style from "./header.module.scss";
+
 const Header = () => {
-  const { name, loading, getData, userInfo, getUserFromLocal, DeleteUser } =
-    useUserStore();
+  const setSearch = useDataStore((store) => store.setAsyncData);
   const [inputData, setInputData] = useState("");
-  function handleClick(params) {
-    if (inputData !== "") {
-      return getData(`search/?q=${inputData}`);
-    }
-    console.log("enter correct data");
-  }
-  useEffect(() => {
-    getUserFromLocal();
-  }, []);
+  const handleClick = async () => {
+    await setSearch(inputData);
+  };
   return (
-    <Container fluid>
-      <Row className="header-wrapper">
-        <Col className={`links`}>
-          <Link to="/">home</Link>
-          <Link to="/explore"> other page</Link>
-        </Col>
-        <Col className="header-search">
-          <label htmlFor="">
-            <input
-              type="text"
-              placeholder="enter to search"
-              onInput={(e) => {
-                setInputData(e.target.value);
-              }}
-              onKeyDown={(e) => {
-                e.key === "Enter" && handleClick();
-              }}
-              value={inputData}
-            />
-            <BsSearch onClick={handleClick} />
-          </label>
-        </Col>
+    <Container fluid className={style.header__con}>
+      <Row>
         <Col>
+          <Stack direction="horizontal" className="justify-content-end">
+            <label htmlFor="" className={style.inputBox}>
+              <input
+                type="text"
+                placeholder="Enter to search"
+                className={style.input}
+                onInput={(e) => {
+                  setInputData(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  e.key === "Enter" && handleClick();
+                }}
+                value={inputData}
+              />
+              <BsSearch onClick={handleClick} />
+            </label>
+          </Stack>
+        </Col>
+        {/* <Col>
           <button
             className="mode"
             onClick={(e) => {
@@ -51,9 +43,9 @@ const Header = () => {
           >
             mode
           </button>
-        </Col>
+        </Col> */}
 
-        <Col>
+        {/* <Col>
           {userInfo.length === 0 ? (
             <>
               <div className={`login-links`}>
@@ -74,7 +66,7 @@ const Header = () => {
               <p>{userInfo?.name}</p>
             </div>
           )}
-        </Col>
+        </Col> */}
       </Row>
     </Container>
   );

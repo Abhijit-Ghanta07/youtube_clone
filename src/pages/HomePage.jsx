@@ -1,20 +1,20 @@
 import React from "react";
-
-import GetData from "../data/GetData";
 import { Col, Container, Row } from "react-bootstrap";
-import useDataStore from "../context/DataContext";
+import { Outlet } from "react-router-dom";
+import { Sidebar, Header } from "../includes/index";
 
+// style
+import style from "./page.module.scss";
 const HomePage = () => {
-  const data = useDataStore((store) => store.DATA);
-
   return (
     <>
-      <Container fluid="xl">
-        <Row>
-          <Col>This is home page</Col>
-        </Row>
+      <Container fluid>
+        <Sidebar />
+        <Container className={style.wrapper} fluid>
+          <Header />
+          <Outlet />
+        </Container>
       </Container>
-      <GetData />
     </>
   );
 };

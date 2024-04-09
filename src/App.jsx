@@ -1,30 +1,54 @@
 import { Suspense, lazy } from "react";
-
-import { Route, Routes } from "react-router-dom";
-import Auth from "./components/auth/Auth";
-import Channel from "./components/channel/Channel";
-import VideoList from "./components/videoList/VideoList";
-import Videoplayer from "./components/videoplayer/Videoplayer";
-
+import {
+  Outlet,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 const HomePage = lazy(() => import("./pages/HomePage"));
+const AuthPage = lazy(() => import("./pages/AuthPage"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+const ChannelPage = lazy(() => import("./pages/ChannelPage"));
+const VideoPage = lazy(() => import("./pages/VideoPage"));
+import { Loader, VideoPlayer } from "./components/index";
+import { Home, Category } from "./layouts/index";
+import GetData from "./data/GetData";
+
+const SuspenseLayout = () => {
+  return (
+    <Suspense fallback={<Loader />}>
+      <Outlet />
+    </Suspense>
+  );
+};
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<SuspenseLayout />} errorElement={<ErrorPage />}>
+      <Route path="/" element={<HomePage />}>
+        <Route index element={<Home />} />
+        <Route path="category/:category" element={<Category />} />
+      </Route>
+      <Route path="/auth" element={<AuthPage />} errorElement={<ErrorPage />}>
+        {/* <Route index element={<Login />} />
+        <Route path="register" element={<Register />} /> */}
+      </Route>
+      <Route path="/channel/:id" element={<ChannelPage />} />
+      <Route path="/video/:id" element={<VideoPage />} />
+      <Route path="/video/play/:id" element={<VideoPlayer />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Route>
+  )
+);
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Suspense>
-              <HomePage />
-            </Suspense>
-          }
-        />
-        {/* <Route path="/register" element={<Auth />} />
-        <Route path="/channel/details/:id" element={<Channel />} />
-         <Route path="/videos/:id" element={<Channel />} /> 
-        <Route path="/video/play/:videoid" element={<Videoplayer />} /> */}
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <RouterProvider router={router} />
+      </Suspense>
+      <GetData />
     </>
   );
 }

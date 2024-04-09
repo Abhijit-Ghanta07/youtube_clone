@@ -1,17 +1,16 @@
-import { useDataStore } from "../../context/Context";
-import Video from "./Video";
-import "./videolist.css";
-const VideoList = () => {
-  const storeData = useDataStore((store) => store.DATA);
-
+import { Container, Row } from "react-bootstrap";
+import VideoCard from "../videoCard/VideoCard";
+import style from "./videolist.module.scss";
+import Title from "../titleCard/Title";
+const VideoList = ({ Data, title = "Featured" }) => {
   return (
-    <div className="video-container">
-      <div className="video-wrapper">
-        {storeData?.map((video, index) => (
-          <Video video={video} key={index} />
-        ))}
-      </div>
-    </div>
+    <Container fluid className="p-0">
+      <Title name={`${title} Videos`} />
+      <Row className={style.videoCard__wrapper}>
+        {Data &&
+          Data?.map((video, index) => <VideoCard video={video} key={index} />)}
+      </Row>
+    </Container>
   );
 };
 

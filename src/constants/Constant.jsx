@@ -1,38 +1,84 @@
-import { AiFillHome } from "react-icons/ai";
-import { MdExplore } from "react-icons/md";
+import {
+  MdExplore,
+  MdCastForEducation,
+  MdLiveTv,
+  MdOutlineSportsCricket,
+} from "react-icons/md";
+import { SiApplepodcasts } from "react-icons/si";
 import { GrChannel } from "react-icons/gr";
-import { RiCommunityFill, RiPlayListFill } from "react-icons/ri";
+import { FaArrowTrendUp } from "react-icons/fa6";
+import { IoMdMusicalNotes } from "react-icons/io";
+import { BiSolidCameraMovie } from "react-icons/bi";
+import { IoGameController } from "react-icons/io5";
+import { TbHanger } from "react-icons/tb";
+import { GiBeanstalk } from "react-icons/gi";
 
 const catagories = [
   {
-    id: 1,
-    title: "home",
-    icon: <AiFillHome />,
-    path: "new",
-  },
-  {
     id: 2,
-    title: "explore",
+    title: "New",
     icon: <MdExplore />,
-    path: "explore",
+    path: "new videos",
   },
   {
     id: 3,
-    title: "channel",
-    icon: <GrChannel />,
-    path: "channel",
+    title: "Trending",
+    icon: <FaArrowTrendUp />,
+    path: "trending",
   },
   {
     id: 4,
-    title: "playlist",
-    icon: <RiPlayListFill />,
-    path: "playlist",
+    title: "Live",
+    icon: <MdLiveTv />,
+    path: "live videos",
   },
   {
     id: 5,
-    title: "commiunity",
-    icon: <RiCommunityFill />,
-    path: "commiunity",
+    title: "Music",
+    icon: <IoMdMusicalNotes />,
+    path: "music videos",
+  },
+  {
+    id: 6,
+    title: "Sport",
+    icon: <MdOutlineSportsCricket />,
+    path: "sport videos",
+  },
+  {
+    id: 7,
+    title: "Educational",
+    icon: <MdCastForEducation />,
+    path: "educational videos",
+  },
+  {
+    id: 8,
+    title: "Podcast",
+    icon: <SiApplepodcasts />,
+    path: "podcast videos",
+  },
+  {
+    id: 9,
+    title: "Movie",
+    icon: <BiSolidCameraMovie />,
+    path: "movies",
+  },
+  {
+    id: 10,
+    title: "Gaming",
+    icon: <IoGameController />,
+    path: "gaming videos",
+  },
+  {
+    id: 11,
+    title: "Fashion",
+    icon: <TbHanger />,
+    path: "fashion videos",
+  },
+  {
+    id: 12,
+    title: "Beauty",
+    icon: <GiBeanstalk />,
+    path: "beauty videos",
   },
 ];
 
