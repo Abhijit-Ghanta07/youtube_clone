@@ -2,9 +2,16 @@
 .logo {
   text-align: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: $light;
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+  }
 }
 .sidebar {
   &__con {

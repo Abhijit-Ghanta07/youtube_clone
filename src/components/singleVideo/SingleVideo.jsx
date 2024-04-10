@@ -24,7 +24,7 @@ const SingleVideo = ({ video }) => {
           <Card className={style.video__card}>
             <CardHeader className="position-relative">
               <img
-                src={video?.thumbnails[0]?.url}
+                src={video?.thumbnails[2]?.url}
                 className={style.video__card__img}
               />
               <Link

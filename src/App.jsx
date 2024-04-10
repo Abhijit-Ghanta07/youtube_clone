@@ -10,7 +10,6 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const ChannelPage = lazy(() => import("./pages/ChannelPage"));
-const VideoPage = lazy(() => import("./pages/VideoPage"));
 const VideoPlayer = lazy(() => import("./pages/Videoplayer"));
 import { Loader } from "./components/index";
 import { Home, Category } from "./layouts/index";
@@ -36,8 +35,7 @@ const router = createBrowserRouter(
         <Route path="register" element={<Register />} /> */}
       </Route>
       <Route path="/channel/:id" element={<ChannelPage />} />
-      <Route path="/video/:id" element={<VideoPage />} />
-      <Route path="/video/play/:id" element={<VideoPlayer />} />
+      <Route path="/video/:id" element={<VideoPlayer />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )

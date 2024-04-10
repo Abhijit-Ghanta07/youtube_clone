@@ -9,7 +9,10 @@ const VideoCard = ({ video }) => {
   };
   return (
     <Card className={style.videoCard}>
-      <Link to={`/video/${video?.video_id}`} className="position-relative">
+      <Link
+        to={`/video/${video?.video_id}`}
+        className="position-relative overflow-hidden"
+      >
         <img
           src={video?.thumbnails[0]?.url}
           className={style.videoCard__img}

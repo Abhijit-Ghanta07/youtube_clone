@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
-import { useDataStore, useLoaderStore } from "../services/store/store";
+import { useDataStore } from "../services/store/store";
 
 const GetData = () => {
-  const { data, err, loading } = useFetch("search/?query=indian%20songs");
+  const { data } = useFetch("search/?query=indian%20songs");
   const storeData = useDataStore((store) => store.setData);
   const videos = useDataStore((store) => store.videoData);
 
