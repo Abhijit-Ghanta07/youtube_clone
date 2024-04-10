@@ -1,4 +1,4 @@
 import Home from "./Home";
-import Category from "./Category";
+import Player from "./Player";
 
-export { Home, Category };
+export { Home, Player };

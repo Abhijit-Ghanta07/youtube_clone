@@ -19,13 +19,14 @@ body {
 }
 a {
   text-decoration: none;
-  color: inherit;
+  color: #fff;
 }
 p,
 h2,
 h1,
 h3,
-h4 {
+h4,
+span {
   margin-bottom: 0;
   color: #fff;
 }

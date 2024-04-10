@@ -1,0 +1,59 @@
+@import "../sass/responsive.scss";
+
+.wrapper {
+  margin-left: 0;
+  width: auto;
+  @include md() {
+    margin-left: 180px;
+    width: calc(100% - 180px);
+  }
+}
+.videoPage__con {
+  @extend .wrapper;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.video {
+  &__wrapper {
+    margin-left: 0;
+    width: auto;
+    height: 100vh;
+    overflow: hidden;
+    @include md() {
+      margin-left: 180px;
+      width: calc(100% - 180px);
+    }
+  }
+  &__title {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: "toast";
+  }
+  &__subtitle {
+    // height: 2rem;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    padding: 1rem !important;
+    font-family: "popines";
+    height: 2rem;
+  }
+  &__author {
+    font-family: "popines";
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 0 0.7rem;
+  }
+  &__views {
+    display: flex;
+    gap: 0.5rem;
+    overflow: hidden;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+.recom__con {
+  overflow-y: auto;
+}

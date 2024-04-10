@@ -1,4 +1,5 @@
 @import "../../sass/variable.scss";
+@import "../../sass/responsive.scss";
 .logo {
   text-align: center;
   font-weight: bold;
@@ -16,7 +17,7 @@
 .sidebar {
   &__con {
     box-sizing: border-box;
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -28,6 +29,9 @@
     overflow-x: hidden;
     &::-webkit-scrollbar {
       width: 10px;
+    }
+    @include md() {
+      display: block;
     }
   }
   &__link {

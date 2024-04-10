@@ -1,12 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import style from "./video.module.scss";
+import { Link } from "react-router-dom";
 import { Card, CardBody, CardImg } from "react-bootstrap";
+import { countViews } from "../../utils/countViews";
+// style
+import style from "./video.module.scss";
 const VideoCard = ({ video }) => {
-  const viewsInk = (k) => {
-    const divid = k / 10000;
-
-    return Math.ceil(divid);
-  };
   return (
     <Card className={style.videoCard}>
       <Link
@@ -25,13 +22,14 @@ const VideoCard = ({ video }) => {
         <h2 className={style.videoCard__title}>{video?.title}</h2>
         <Link
           className={style.videoCard__channel}
-          to={`/channel/details/${video?.channel_id}`}
+          to={`/channel/${video?.channel_id}`}
         >
           <p>{video?.author}</p>
         </Link>
-        <pre className={style.videoCard__views}>
-          {viewsInk(video?.number_of_views)}K views . {video?.published_time}
-        </pre>
+        <p className={style.videoCard__views}>
+          <span>{countViews(video?.number_of_views)}K views .</span>
+          <span>{video?.published_time}</span>
+        </p>
       </CardBody>
     </Card>
   );

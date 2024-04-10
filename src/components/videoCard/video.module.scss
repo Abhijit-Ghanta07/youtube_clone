@@ -26,6 +26,8 @@
     }
   }
   &__views {
+    display: inline-flex;
+    gap: 0.4rem;
     font-size: 0.8rem;
     overflow: hidden;
     font-family: sans-serif;

@@ -8,7 +8,7 @@ const Home = () => {
     <Container fluid>
       <Row>
         <Col>
-          <VideoList Data={videoData} />
+          <VideoList videos={videoData} />
         </Col>
       </Row>
     </Container>

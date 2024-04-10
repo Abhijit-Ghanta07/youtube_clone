@@ -6,8 +6,7 @@ import useFetch from "../hooks/useFetch";
 import { useLoaderStore } from "../services/store/store";
 const Category = () => {
   const { category } = useParams();
-  const stopLoading = useLoaderStore((store) => store.stopLoading);
-  const startLoading = useLoaderStore((store) => store.startLoading);
+  const { startLoading, stopLoading } = useLoaderStore((store) => store);
   const { data, loading } = useFetch(`search/?query=${category}`);
   useEffect(() => {
     if (loading) {
@@ -18,7 +17,7 @@ const Category = () => {
   }, [loading]);
   return (
     <Container fluid>
-      <VideoList Data={data?.videos} title={category} />
+      <VideoList videos={data?.videos} title={category} />
     </Container>
   );
 };

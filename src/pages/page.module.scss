@@ -1,46 +1,34 @@
+@import "../sass/responsive.scss";
+
 .wrapper {
-  margin-left: 180px;
-  width: calc(100% - 180px);
+  margin-left: 0;
+  width: auto;
+  @include md() {
+    margin-left: 180px;
+    width: calc(100% - 180px);
+  }
 }
 .videoPage__con {
-  margin-left: 180px;
-  width: calc(100% - 180px);
+  @extend .wrapper;
   min-height: 100vh;
   overflow: hidden;
 }
-.player {
-  width: 100%;
-  overflow: hidden;
-  div {
-    width: 100% !important;
-    height: 350px !important;
-  }
-}
 
-.video {
-  &__title {
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-family: "toast";
+.errorCard {
+  width: 15rem;
+  border-radius: 10px;
+  color: #000 !important;
+  &__wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  &__subtitle {
-    // height: 2rem;
-    // text-overflow: ellipsis;
-    // overflow: hidden;
-    padding: 1rem !important;
-    font-family: "popines";
-    height: 2rem;
-  }
-  &__author {
-    font-family: "popines";
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding: 0 0.7rem;
-  }
-  &__views {
-    padding: 0 0.6rem;
-    color: #fff;
+  &__body {
+    text-align: center;
+    & > * {
+      padding: 0.5rem;
+      color: #000;
+    }
   }
 }
