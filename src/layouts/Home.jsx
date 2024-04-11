@@ -5,7 +5,7 @@ import { useDataStore } from "../services/store/store";
 const Home = () => {
   const videoData = useDataStore((store) => store.videoData);
   return (
-    <Container fluid>
+    <Container fluid className="p-0">
       <Row>
         <Col>
           <VideoList

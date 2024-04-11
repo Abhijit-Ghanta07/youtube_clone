@@ -4,6 +4,7 @@
 .wrapper {
   margin-left: 0;
   width: auto;
+  padding: 0 !important;
   @include md() {
     margin-left: 180px;
     width: calc(100% - 180px);

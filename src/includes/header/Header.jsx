@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { useDataStore } from "../../services/store/store";
@@ -6,8 +6,9 @@ import { useDataStore } from "../../services/store/store";
 import style from "./header.module.scss";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import catagories from "../../constants/Constant";
-
+import { ThemeContext } from "../../services/providers/ThemeProvider";
 const Header = () => {
+  const { mode, setMode } = useContext(ThemeContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const setSearch = useDataStore((store) => store.setAsyncData);
@@ -16,62 +17,53 @@ const Header = () => {
     navigate(`/search/${inputData}`);
     setInputData("");
   };
+  console.log(mode);
+  useEffect(() => {
+    if (mode) {
+      document.documentElement.setAttribute("data-bs-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-bs-theme");
+    }
+  }, [mode]);
   return (
     <Container fluid className={style.header__con}>
-      <Row>
-        <Col>
-          <Stack direction="horizontal" className="justify-content-end">
-            <label htmlFor="" className={style.inputBox}>
-              <input
-                type="text"
-                placeholder="Enter to search"
-                className={style.input}
-                onInput={(e) => {
-                  setInputData(e.target.value);
-                }}
-                onKeyDown={(e) => {
-                  e.key === "Enter" && handleClick();
-                }}
-                value={inputData}
-              />
-              <BsSearch onClick={handleClick} />
-            </label>
-          </Stack>
+      <Row className="gap-2">
+        <Col xs>
+          <img
+            src="/images/logo.png"
+            alt="logo"
+            className={style.header__logo}
+          />
         </Col>
-        {/* <Col>
+        <Col xs className="text-end">
           <button
-            className="mode"
+            className={style.mode}
             onClick={(e) => {
               e.stopPropagation();
-              // setmode((e) => (e === "darkmode" ? "lightmode" : "darkmode"));
+              setMode(!mode);
             }}
           >
-            mode
+            <img src="/icons/sun.svg" alt="sun" />
           </button>
-        </Col> */}
+        </Col>
 
-        {/* <Col>
-          {userInfo.length === 0 ? (
-            <>
-              <div className={`login-links`}>
-                <Link to="/login">login</Link>
-                <Link to="/register">register</Link>
-              </div>
-            </>
-          ) : (
-            <div className="user">
-              <div
-                className="logo"
-                onClick={() => {
-                  DeleteUser();
-                }}
-              >
-                <BiUserCircle />
-              </div>
-              <p>{userInfo?.name}</p>
-            </div>
-          )}
-        </Col> */}
+        <Col xs className="text-end">
+          <label htmlFor="" className={style.inputBox}>
+            <input
+              type="text"
+              placeholder="Enter to search"
+              className={style.input}
+              onInput={(e) => {
+                setInputData(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                e.key === "Enter" && handleClick();
+              }}
+              value={inputData}
+            />
+            <BsSearch onClick={handleClick} style={{ cursor: "pointer" }} />
+          </label>
+        </Col>
       </Row>
       <Row>
         <Col className="overflow-y-auto">
@@ -83,8 +75,9 @@ const Header = () => {
               return (
                 <Link
                   to={`category/${cata.path}`}
+                  key={cata.id}
                   className={
-                    pathname == cata.title
+                    pathname == cata.path
                       ? style.link__tab__active
                       : style.link__tab
                   }

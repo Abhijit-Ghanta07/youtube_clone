@@ -8,7 +8,7 @@ const VideoList = ({
   direction = "horizontal",
 }) => {
   return (
-    <Container fluid className="px-3">
+    <Container fluid className="px-1">
       <Title name={`${title.toLocaleUpperCase()}`} />
       <Row>
         <Stack direction={direction} className={style.videoCard__wrapper}>

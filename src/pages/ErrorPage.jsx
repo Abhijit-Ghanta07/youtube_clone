@@ -14,6 +14,7 @@ const ErrorPage = () => {
               <CardBody className={style.errorCard__body}>
                 <h3>404</h3>
                 <p>Page Not Found</p>
+                <p>🚧You are in a wrong page.</p>
                 <Button variant="primary">
                   <Link to={"/"}>Go Back</Link>
                 </Button>
