@@ -3,3 +3,16 @@ $light: #f8f8f8;
 $active: #c00000;
 $text: #ffffff;
 $sidebar-bg: #000;
+
+@mixin btnBack() {
+  background-color: $dark;
+  border: 2px solid $light;
+  outline: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: fit-content;
+  padding: 10px 15px;
+  text-align: center;
+  color: $light;
+}

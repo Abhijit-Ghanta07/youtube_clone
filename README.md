@@ -1,13 +1,23 @@
 ## Youtube Clone made with React and Bootstrap
 
+Live site Link [playtube](https://playtube-i3t9.onrender.com). <br/>
+
+**Deployed On Render**
+
 **Scripts**
 
 _Development_
 
-> npm install
+```
+ npm install
 
-> npm run dev
+ npm run dev
+
+```
 
 _Delpoy_
 
-> npm run build
+```
+ npm run build
+
+```

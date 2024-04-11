@@ -3,14 +3,12 @@ import useFetch from "../hooks/useFetch";
 import { useDataStore } from "../services/store/store";
 
 const GetData = () => {
-  const { data } = useFetch("search/?query=indian%20songs");
+  const { data } = useFetch("search/?query=trending videos");
   const storeData = useDataStore((store) => store.setData);
   const videos = useDataStore((store) => store.videoData);
 
   useEffect(() => {
-    if (videos?.length > 0 && videos !== null) {
-      return;
-    } else if (data !== null && data !== undefined) {
+    if (data !== null && data !== undefined && data?.videos.length > 0) {
       storeData(data?.videos);
     }
   }, [data]);

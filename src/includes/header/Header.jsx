@@ -4,12 +4,17 @@ import { BsSearch } from "react-icons/bs";
 import { useDataStore } from "../../services/store/store";
 // styles
 import style from "./header.module.scss";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import catagories from "../../constants/Constant";
 
 const Header = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const setSearch = useDataStore((store) => store.setAsyncData);
   const [inputData, setInputData] = useState("");
   const handleClick = async () => {
-    await setSearch(inputData);
+    navigate(`/search/${inputData}`);
+    setInputData("");
   };
   return (
     <Container fluid className={style.header__con}>
@@ -67,6 +72,29 @@ const Header = () => {
             </div>
           )}
         </Col> */}
+      </Row>
+      <Row>
+        <Col className="overflow-y-auto">
+          <Stack className={style.link__wrapper}>
+            <Link className={style.link__tab__active} to={"/"}>
+              Home
+            </Link>
+            {catagories.map((cata) => {
+              return (
+                <Link
+                  to={`category/${cata.path}`}
+                  className={
+                    pathname == cata.title
+                      ? style.link__tab__active
+                      : style.link__tab
+                  }
+                >
+                  {cata.title}
+                </Link>
+              );
+            })}
+          </Stack>
+        </Col>
       </Row>
     </Container>
   );

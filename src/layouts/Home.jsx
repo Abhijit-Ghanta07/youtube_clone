@@ -8,7 +8,11 @@ const Home = () => {
     <Container fluid>
       <Row>
         <Col>
-          <VideoList videos={videoData} />
+          <VideoList
+            videos={videoData}
+            direction={"horizontal"}
+            title="Featured Videos"
+          />
         </Col>
       </Row>
     </Container>

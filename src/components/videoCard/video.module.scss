@@ -1,14 +1,14 @@
 @import "../../sass/responsive.scss";
 .videoCard {
-  width: 11rem !important;
+  width: 11rem;
+  max-width: 100% !important;
   padding: 0 !important;
   border-radius: 5px !important;
-  overflow: hidden;
   flex-grow: 1;
   background-color: #000 !important;
   color: #fff !important;
   @include md() {
-    width: 13rem !important;
+    width: 13rem;
   }
   &__title {
     font-size: 0.8rem !important;

@@ -12,6 +12,7 @@ const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const ChannelPage = lazy(() => import("./pages/ChannelPage"));
 const VideoPage = lazy(() => import("./pages/VideoPage"));
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
 import { Loader } from "./components/index";
 import { Home } from "./layouts/index";
 import GetData from "./data/GetData";
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/channel/:id" element={<ChannelPage />} />
       <Route path="/video/:id" element={<VideoPage />} />
+      <Route path="search/:query" element={<SearchPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )

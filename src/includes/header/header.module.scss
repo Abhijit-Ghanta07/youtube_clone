@@ -1,9 +1,10 @@
-@import "../../sass//variable.scss";
+@import "../../sass/variable.scss";
+@import "../../sass/responsive.scss";
 
 .header {
   &__con {
     background-color: $sidebar-bg;
-    padding: 1rem;
+    padding: 1rem 0 !important;
     position: sticky;
     top: 0;
     z-index: 9;
@@ -24,5 +25,27 @@
   }
   &:focus {
     outline: none;
+  }
+}
+.link {
+  &__wrapper {
+    display: flex;
+    flex-direction: row !important;
+    white-space: nowrap;
+    gap: 1rem !important;
+    padding: 1rem 0;
+    @include md() {
+      display: none;
+    }
+  }
+  &__tab {
+    background-color: #3a3a3ab1;
+    padding: 10px 15px;
+    border-radius: 7px;
+
+    &__active {
+      @extend .link__tab;
+      background-color: $active;
+    }
   }
 }
