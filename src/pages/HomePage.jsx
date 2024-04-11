@@ -11,7 +11,7 @@ const HomePage = () => {
   const status = useLoaderStore((store) => store.status);
   return (
     <>
-      <Container fluid>
+      <Container fluid className="p-0">
         <Sidebar />
         <Container className={style.wrapper} fluid>
           <Header />

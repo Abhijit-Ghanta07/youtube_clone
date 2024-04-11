@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { useDataStore } from "../../services/store/store";
-// styles
-import style from "./header.module.scss";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import catagories from "../../constants/Constant";
+import cl from "classnames";
+// styles
+import style from "./header.module.scss";
+
 import { ThemeContext } from "../../services/providers/ThemeProvider";
 const Header = () => {
   const { mode, setMode } = useContext(ThemeContext);
@@ -17,16 +19,15 @@ const Header = () => {
     navigate(`/search/${inputData}`);
     setInputData("");
   };
-  console.log(mode);
   useEffect(() => {
     if (mode) {
-      document.documentElement.setAttribute("data-bs-theme", "light");
+      document.documentElement.setAttribute("data-bs-theme", "dark");
     } else {
       document.documentElement.removeAttribute("data-bs-theme");
     }
   }, [mode]);
   return (
-    <Container fluid className={style.header__con}>
+    <Container fluid className={cl(style.header__con, "bg-dark")}>
       <Row className="gap-2">
         <Col xs>
           <img
@@ -68,7 +69,12 @@ const Header = () => {
       <Row>
         <Col className="overflow-y-auto">
           <Stack className={style.link__wrapper}>
-            <Link className={style.link__tab__active} to={"/"}>
+            <Link
+              className={
+                pathname == "/" ? style.link__tab__active : style.link__tab
+              }
+              to={"/"}
+            >
               Home
             </Link>
             {catagories.map((cata) => {
@@ -77,7 +83,7 @@ const Header = () => {
                   to={`category/${cata.path}`}
                   key={cata.id}
                   className={
-                    pathname == cata.path
+                    cata.path == pathname.split("/")[2]
                       ? style.link__tab__active
                       : style.link__tab
                   }

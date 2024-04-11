@@ -54,12 +54,12 @@ const VideoPage = () => {
       <Sidebar />
       <Container fluid className={style.video__wrapper}>
         <Header />
-        <Row>
+        <Row className="p-3">
           <Col xs={12} md={8}>
             <Player videoId={id} />
             <p className={style.video__title}>{video?.title}</p>
             <Link
-              to={`/channel/${video?.video_id}`}
+              to={`/channel/${video?.channel_id}`}
               className={style.video__author}
             >
               {video?.author}

@@ -3,9 +3,11 @@
 .wrapper {
   margin-left: 0;
   width: auto;
+  padding: 0 !important;
+  overflow-x: hidden;
   @include md() {
-    margin-left: 180px;
-    width: calc(100% - 180px);
+    margin-left: 200px;
+    width: calc(100% - 200px);
   }
 }
 .videoPage__con {
@@ -19,10 +21,12 @@
     margin-left: 0;
     width: auto;
     overflow: hidden;
+
     @include md() {
       margin-left: 180px;
       width: calc(100% - 180px);
     }
+    color: #fff;
   }
   &__title {
     font-size: 1rem;

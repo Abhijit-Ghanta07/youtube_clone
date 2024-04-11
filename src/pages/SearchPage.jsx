@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useLoaderStore } from "../services/store/store";
 import { Loading, VideoList } from "../components";
-import { Container } from "react-bootstrap";
-
+import { Col, Container, Row } from "react-bootstrap";
+import { Header, Sidebar } from "../includes/index";
+import style from "./page.module.scss";
 const SearchPage = () => {
   const { query } = useParams();
   const { status, startLoading, stopLoading } = useLoaderStore(
@@ -20,11 +21,17 @@ const SearchPage = () => {
   }, [loading]);
   return (
     <>
-      <Container fluid>
-        <VideoList
-          videos={data?.videos}
-          title={`founded videos for ${query}`}
-        />
+      <Sidebar />
+      <Container fluid className={style.wrapper}>
+        <Header />
+        <Row>
+          <Col>
+            <VideoList
+              videos={data?.videos}
+              title={`founded videos for ${query}`}
+            />
+          </Col>
+        </Row>
       </Container>
       <Loading status={status} />
     </>

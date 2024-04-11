@@ -7,7 +7,7 @@ import { useLoaderStore } from "../services/store/store";
 const Category = () => {
   const { category } = useParams();
   const { startLoading, stopLoading } = useLoaderStore((store) => store);
-  const { data, loading } = useFetch(`search/?query=${category}`);
+  const { data, loading } = useFetch(`search/?query=${category} videos`);
   useEffect(() => {
     if (loading) {
       startLoading();

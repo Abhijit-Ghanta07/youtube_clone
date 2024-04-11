@@ -14,12 +14,12 @@
 body {
   width: 100%;
   scroll-behavior: smooth;
-  background-color: #000;
+  background-color: #1b1c1c;
   font-family: "russo";
 }
 a {
   text-decoration: none;
-  color: #fff;
+  color: inherit;
 }
 p,
 h2,
@@ -28,5 +28,4 @@ h3,
 h4,
 span {
   margin-bottom: 0;
-  color: #fff;
 }

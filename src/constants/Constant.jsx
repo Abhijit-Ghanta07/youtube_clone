@@ -18,7 +18,7 @@ const catagories = [
     id: 2,
     title: "New",
     icon: <MdExplore />,
-    path: "new videos",
+    path: "new",
   },
   {
     id: 3,
@@ -30,31 +30,31 @@ const catagories = [
     id: 4,
     title: "Live",
     icon: <MdLiveTv />,
-    path: "live videos",
+    path: "live",
   },
   {
     id: 5,
     title: "Music",
     icon: <IoMdMusicalNotes />,
-    path: "music videos",
+    path: "music",
   },
   {
     id: 6,
     title: "Sport",
     icon: <MdOutlineSportsCricket />,
-    path: "sport videos",
+    path: "sport",
   },
   {
     id: 7,
     title: "Educational",
     icon: <MdCastForEducation />,
-    path: "educational videos",
+    path: "educational",
   },
   {
     id: 8,
     title: "Podcast",
     icon: <SiApplepodcasts />,
-    path: "podcast videos",
+    path: "podcast",
   },
   {
     id: 9,
@@ -66,19 +66,19 @@ const catagories = [
     id: 10,
     title: "Gaming",
     icon: <IoGameController />,
-    path: "gaming videos",
+    path: "gaming",
   },
   {
     id: 11,
     title: "Fashion",
     icon: <TbHanger />,
-    path: "fashion videos",
+    path: "fashion",
   },
   {
     id: 12,
     title: "Beauty",
     icon: <GiBeanstalk />,
-    path: "beauty videos",
+    path: "beauty",
   },
 ];
 

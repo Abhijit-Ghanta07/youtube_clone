@@ -1,12 +1,14 @@
 import catagories from "../../constants/Constant";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { Col, Container, Row, Stack } from "react-bootstrap";
+import cl from "classnames";
 // styles
 import style from "./sidebar.module.scss";
 const Sidebar = () => {
+  const { pathname } = useLocation();
   return (
-    <Container className={style.sidebar__con}>
+    <Container className={cl(style.sidebar__con, "bg-dark")}>
       <Row>
         <Col>
           <h3 className={style.logo}>
@@ -17,7 +19,14 @@ const Sidebar = () => {
             </span>
           </h3>
           <Stack gap={2} direction="vertical" className={style.flex__wrapper}>
-            <Link to={"/"} className={style.sidebar__link}>
+            <Link
+              to={"/"}
+              className={
+                pathname == "/"
+                  ? style.sidebar__link__active
+                  : style.sidebar__link
+              }
+            >
               <span>
                 <AiFillHome />
               </span>
@@ -28,7 +37,11 @@ const Sidebar = () => {
                 <Link
                   to={`/category/${cata.path}`}
                   key={cata.id}
-                  className={style.sidebar__link}
+                  className={
+                    cata.path == pathname.split("/")[2]
+                      ? style.sidebar__link__active
+                      : style.sidebar__link
+                  }
                 >
                   <span>{cata.icon}</span>
                   {cata.title}
@@ -44,33 +57,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-{
-  /* <div className="sidebar-container">
-<div className="sidebar-wrapper">
-  <div className="logo">
-    <SiAirplayvideo />
-    <Link to="/">videoPlayer</Link>
-  </div>
-  <div className="search">
-    <input
-      type="text"
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          e.stopPropagation();
-          e.preventDefault();
-          setInputData(e.target.value);
-        } else {
-          console.log("not enter key");
-        }
-      }}
-    />
-  </div>
-  <div className="list">
-    {catagories.map((item, index) => (
-      <List name={item.name} icon={item.icon} key={index + 1} />
-    ))}
-  </div>
-</div>
-</div> */
-}
