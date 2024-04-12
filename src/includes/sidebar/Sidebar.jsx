@@ -2,13 +2,17 @@ import catagories from "../../constants/Constant";
 import { Link, useLocation } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { Col, Container, Row, Stack } from "react-bootstrap";
+import { useTheme } from "../../services/providers/ThemeProvider";
 import cl from "classnames";
 // styles
 import style from "./sidebar.module.scss";
 const Sidebar = () => {
   const { pathname } = useLocation();
+  const { theme, toogleTheme } = useTheme();
   return (
-    <Container className={cl(style.sidebar__con, "bg-dark")}>
+    <Container
+      className={cl(theme ? style.sidebar__con : style.sidebar__con__dark)}
+    >
       <Row>
         <Col>
           <h3 className={style.logo}>

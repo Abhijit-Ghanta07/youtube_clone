@@ -3,18 +3,11 @@
 
 .wrapper {
   margin-left: 0;
-  width: auto;
   padding: 0 !important;
-  overflow-x: hidden;
   @include md() {
     margin-left: 200px;
     width: calc(100% - 200px);
   }
-}
-.videoPage__con {
-  @extend .wrapper;
-  min-height: 100vh;
-  overflow: hidden;
 }
 
 .errorCard {

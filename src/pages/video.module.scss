@@ -1,10 +1,12 @@
 @import "../sass/responsive.scss";
+@import "../sass/variable.scss";
 
 .wrapper {
   margin-left: 0;
   width: auto;
   padding: 0 !important;
   overflow-x: hidden;
+  background-color: $dark !important;
   @include md() {
     margin-left: 200px;
     width: calc(100% - 200px);
@@ -21,19 +23,22 @@
     margin-left: 0;
     width: auto;
     overflow: hidden;
-
+    color: $dark !important;
     @include md() {
       margin-left: 180px;
       width: calc(100% - 180px);
     }
-    color: #fff;
+    &__dark {
+      @extend .video__wrapper;
+      background-color: $dark !important;
+      color: $light !important;
+    }
   }
   &__title {
     font-size: 1rem;
     font-weight: 500;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
-    font-family: "toast";
   }
   &__subtitle {
     // height: 2rem;

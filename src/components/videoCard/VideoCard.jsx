@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { Card, CardBody, CardImg } from "react-bootstrap";
 import { countViews } from "../../utils/countViews";
 import cl from "classnames";
+import { useTheme } from "../../services/providers/ThemeProvider";
 // style
 import style from "./video.module.scss";
 const VideoCard = ({ video }) => {
+  const { theme } = useTheme();
   return (
-    <Card className={cl(style.videoCard)}>
+    <Card className={cl(theme ? style.videoCard : style.videoCard__dark)}>
       <Link
         to={`/video/${video?.video_id}`}
         className="position-relative overflow-hidden"

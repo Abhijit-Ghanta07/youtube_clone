@@ -1,7 +1,13 @@
 import React from "react";
-
+import cl from "classnames";
+import { useTheme } from "../../services/providers/ThemeProvider";
 const Title = ({ name }) => {
-  return <h3 className="text-light py-3 px-2">{name}</h3>;
+  const { theme } = useTheme();
+  return (
+    <h3 className={cl("py-3 px-2", theme ? "text-dark" : "text-light")}>
+      {name}
+    </h3>
+  );
 };
 
 export default Title;

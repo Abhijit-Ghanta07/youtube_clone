@@ -42,7 +42,7 @@ const ChannelPage = () => {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="p-0">
         <Row>
           <button className={style.btn}>
             <Link to={"/"}>Go Back</Link>

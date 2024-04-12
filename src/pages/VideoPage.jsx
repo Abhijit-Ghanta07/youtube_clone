@@ -17,9 +17,12 @@ import { useLoaderStore } from "../services/store/store";
 import { countViews } from "../utils/countViews";
 import { Player } from "../layouts/index";
 import fetchData from "../services/api/api";
+import cl from "classnames";
 // style
 import style from "./video.module.scss";
+import { useTheme } from "../services/providers/ThemeProvider";
 const VideoPage = () => {
+  const { theme } = useTheme();
   const { id } = useParams();
   const { status, startLoading, stopLoading } = useLoaderStore(
     (store) => store
@@ -52,7 +55,12 @@ const VideoPage = () => {
   return (
     <>
       <Sidebar />
-      <Container fluid className={style.video__wrapper}>
+      <Container
+        fluid
+        className={cl(
+          theme ? style.video__wrapper : style.video__wrapper__dark
+        )}
+      >
         <Header />
         <Row className="p-3">
           <Col xs={12} md={8}>

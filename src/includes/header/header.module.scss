@@ -3,10 +3,19 @@
 
 .header {
   &__con {
+    width: 100%;
+    overflow-x: hidden;
     padding: 1rem !important;
     position: sticky;
     top: 0;
     z-index: 9;
+    background-color: $dark;
+    color: $light;
+    &__light {
+      @extend .header__con;
+      background-color: $light;
+      color: $dark;
+    }
   }
   &__logo {
     width: 35px;
@@ -30,8 +39,8 @@
   input {
     @extend .inputBox;
     border: 0;
-    padding: 0.3rem;
-    width: fit-content;
+    padding: 0.3rem 0;
+    width: 100%;
   }
   &:focus {
     outline: none;
@@ -69,5 +78,9 @@
   border-radius: 10px;
   img {
     height: 25px;
+  }
+  &__light {
+    @extend .mode;
+    border-color: #000;
   }
 }

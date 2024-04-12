@@ -10,13 +10,26 @@
   font-family: "russo";
   src: url("/fonts/russo.ttf") format("truetype");
 }
+$dark: #000;
+$light: #f8f8f8;
+$active: #c00000;
+$text: #ffffff;
+$sidebar-bg: #000;
 
+:root {
+  background-color: $dark;
+  color: $light;
+  &.dark {
+    color: $dark;
+    background-color: $light;
+  }
+}
 body {
   width: 100%;
   scroll-behavior: smooth;
-  background-color: #1b1c1c;
-  font-family: "russo";
+  font-family: "popines";
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -28,4 +41,5 @@ h3,
 h4,
 span {
   margin-bottom: 0;
+  color: inherit;
 }

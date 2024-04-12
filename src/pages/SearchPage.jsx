@@ -6,7 +6,9 @@ import { Loading, VideoList } from "../components";
 import { Col, Container, Row } from "react-bootstrap";
 import { Header, Sidebar } from "../includes/index";
 import style from "./page.module.scss";
+import { useTheme } from "../services/providers/ThemeProvider";
 const SearchPage = () => {
+  const { theme } = useTheme();
   const { query } = useParams();
   const { status, startLoading, stopLoading } = useLoaderStore(
     (store) => store
@@ -22,7 +24,11 @@ const SearchPage = () => {
   return (
     <>
       <Sidebar />
-      <Container fluid className={style.wrapper}>
+      <Container
+        fluid
+        className={style.wrapper}
+        style={theme ? { background: "#fff" } : { background: "#000" }}
+      >
         <Header />
         <Row>
           <Col>

@@ -4,13 +4,18 @@
   padding: 0 !important;
   border-radius: 5px !important;
   flex-grow: 1 !important;
+
   @include md() {
     width: 13rem !important;
+  }
+  &__dark {
+    @extend .videoCard;
+    background-color: $dark !important;
+    color: $light !important;
   }
   &__title {
     font-size: 0.8rem !important;
     padding: 0.5rem 0;
-    font-family: "popines";
   }
   &__img {
     width: 100%;

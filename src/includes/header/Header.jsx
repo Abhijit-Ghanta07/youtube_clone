@@ -8,9 +8,9 @@ import cl from "classnames";
 // styles
 import style from "./header.module.scss";
 
-import { ThemeContext } from "../../services/providers/ThemeProvider";
+import { useTheme } from "../../services/providers/ThemeProvider";
 const Header = () => {
-  const { mode, setMode } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useTheme();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const setSearch = useDataStore((store) => store.setAsyncData);
@@ -19,15 +19,11 @@ const Header = () => {
     navigate(`/search/${inputData}`);
     setInputData("");
   };
-  useEffect(() => {
-    if (mode) {
-      document.documentElement.setAttribute("data-bs-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-bs-theme");
-    }
-  }, [mode]);
   return (
-    <Container fluid className={cl(style.header__con, "bg-dark")}>
+    <Container
+      fluid
+      className={cl(theme ? style.header__con__light : style.header__con)}
+    >
       <Row className="gap-2">
         <Col xs>
           <img
@@ -38,10 +34,9 @@ const Header = () => {
         </Col>
         <Col xs className="text-end">
           <button
-            className={style.mode}
+            className={cl(theme ? style.mode__light : style.mode)}
             onClick={(e) => {
-              e.stopPropagation();
-              setMode(!mode);
+              toggleTheme();
             }}
           >
             <img src="/icons/sun.svg" alt="sun" />
