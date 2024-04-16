@@ -12,12 +12,10 @@ _Development_
  npm install
 
  npm run dev
-
 ```
 
 _Delpoy_
 
 ```
  npm run build
-
 ```

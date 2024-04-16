@@ -10,7 +10,7 @@ import {
   Stack,
 } from "react-bootstrap";
 import { Sidebar, Header } from "../includes/index";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, ScrollRestoration } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { Loading, Title, VideoList } from "../components/index";
 import { useLoaderStore } from "../services/store/store";
@@ -54,6 +54,7 @@ const VideoPage = () => {
   }, [id, video]);
   return (
     <>
+      <ScrollRestoration />
       <Sidebar />
       <Container
         fluid
