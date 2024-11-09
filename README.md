@@ -9,6 +9,8 @@ Live site Link [playtube](https://playtube-i3t9.onrender.com). <br/>
 _Development_
 
 ```
+BASH
+
  npm install
 
  npm run dev
@@ -17,5 +19,7 @@ _Development_
 _Delpoy_
 
 ```
+BASH
+
  npm run build
 ```

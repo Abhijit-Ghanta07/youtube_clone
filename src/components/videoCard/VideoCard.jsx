@@ -30,7 +30,7 @@ const VideoCard = ({ video }) => {
           <p>{video?.author}</p>
         </Link>
         <p className={style.videoCard__views}>
-          <span>{countViews(video?.number_of_views)}K views .</span>
+          <span>{countViews(video?.number_of_views)} views .</span>
           <span>{video?.published_time}</span>
         </p>
       </CardBody>

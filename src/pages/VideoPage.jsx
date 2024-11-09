@@ -74,7 +74,7 @@ const VideoPage = () => {
               {video?.author}
             </Link>
             <div className={style.video__views}>
-              <span>{countViews(video?.number_of_views)}K views .</span>
+              <span>{countViews(video?.number_of_views)} views .</span>
               <span>{video?.published_time}</span>
             </div>
           </Col>

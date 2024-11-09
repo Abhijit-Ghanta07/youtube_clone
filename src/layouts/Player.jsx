@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import { FaCirclePlay } from "react-icons/fa6";
 // styles
 import style from "./style.module.scss";
-const Player = ({ videoId }) => {
+const Player = ({ videoId = "" }) => {
   let url = `https://www.youtube.com/watch?v=${videoId}`;
   return (
     <>

@@ -38,7 +38,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/channel/:id" element={<ChannelPage />} />
       <Route path="/video/:id" element={<VideoPage />} />
-      <Route path="search/:query" element={<SearchPage />} />
+      <Route path="/search/:query" element={<SearchPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )
