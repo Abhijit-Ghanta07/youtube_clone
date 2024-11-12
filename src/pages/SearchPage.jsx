@@ -7,20 +7,31 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Header, Sidebar } from "../includes/index";
 import style from "./page.module.scss";
 import { useTheme } from "../services/providers/ThemeProvider";
+import { useQuery } from "@tanstack/react-query";
+import axiosInt from "../services/axios/axios";
+
+const fetchSearch = async (q) => {
+  let { data } = await axiosInt.get(`search/?query=${q}`);
+  return data;
+};
 const SearchPage = () => {
   const { theme } = useTheme();
   const { query } = useParams();
   const { status, startLoading, stopLoading } = useLoaderStore(
     (store) => store
   );
-  const { data, loading } = useFetch(`search/?query=${query}`);
+
+  const { data, isPending } = useQuery({
+    queryKey: ["fetchSearch", query],
+    queryFn: () => fetchSearch(query),
+  });
   useEffect(() => {
-    if (loading) {
+    if (isPending) {
       startLoading();
     } else {
       stopLoading();
     }
-  }, [loading]);
+  }, [isPending]);
   return (
     <>
       <Sidebar />

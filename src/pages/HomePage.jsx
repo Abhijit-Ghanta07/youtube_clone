@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Sidebar, Header } from "../includes/index";
 import { Loading } from "../components/index.js";
 import { useLoaderStore } from "../services/store/store";
+import GetData from "../data/GetData.jsx";
 // style
 import style from "./page.module.scss";
 
@@ -19,6 +20,7 @@ const HomePage = () => {
         </Container>
       </Container>
       <Loading status={status} />
+      <GetData />
     </>
   );
 };

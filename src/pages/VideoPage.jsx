@@ -21,13 +21,24 @@ import cl from "classnames";
 // style
 import style from "./video.module.scss";
 import { useTheme } from "../services/providers/ThemeProvider";
+import { useQuery } from "@tanstack/react-query";
+import axiosInt from "../services/axios/axios";
+
+const fetchVideo = async (id) => {
+  let { data } = axiosInt.get(`video/details?video_id=${id}`);
+  return data;
+};
 const VideoPage = () => {
   const { theme } = useTheme();
   const { id } = useParams();
   const { status, startLoading, stopLoading } = useLoaderStore(
     (store) => store
   );
-  const { data: video, loading } = useFetch(`video/details?video_id=${id}`);
+  const { data: video, isPending: loading } = useQuery({
+    queryKey: ["fetchvideo", id],
+    queryFn: () => fetchVideo(id),
+  });
+
   const [videos, setVideos] = useState([]);
   useEffect(() => {
     if (loading) {

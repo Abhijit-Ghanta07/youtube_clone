@@ -6,7 +6,6 @@ const fetchData = async (q = "", signal = "") => {
     const { data } = await axiosInt.get(q, { signal: signal });
     return data;
   } catch (err) {
-    console.log(err);
     return new Error("something went wrong");
   }
 };

@@ -8,21 +8,32 @@ import { Loading, VideoList } from "../components/index";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 
 import style from "./page.module.scss";
+import axiosInt from "../services/axios/axios";
+import { useQuery } from "@tanstack/react-query";
 
+const fetchChanel = async (id) => {
+  let { data } = await axiosInt.get(`channel/details?channel_id=${id}`);
+  return data;
+};
 const ChannelPage = () => {
   const { id } = useParams();
-  const { data, loading } = useFetch(`channel/details?channel_id=${id}`);
+  const { data, isPending } = useQuery({
+    queryKey: ["channel", id],
+    queryFn: () => fetchChanel(id),
+  });
   const { status, startLoading, stopLoading } = useLoaderStore(
     (store) => store
   );
+
   const [videos, setVideos] = useState([]);
+
   useEffect(() => {
-    if (loading) {
+    if (isPending) {
       startLoading();
     } else {
       stopLoading();
     }
-  }, [loading]);
+  }, [isPending]);
 
   useEffect(() => {
     const abort = new AbortController();
