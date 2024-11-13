@@ -8,7 +8,9 @@ import style from "./video.module.scss";
 const VideoCard = ({ video }) => {
   const { theme } = useTheme();
   return (
-    <Card className={cl(theme ? style.videoCard : style.videoCard__dark)}>
+    <Card
+      className={cl(theme ? style.videoCard : style.videoCard__dark, "w-fit")}
+    >
       <Link
         to={`/video/${video?.video_id}`}
         className="position-relative overflow-hidden"

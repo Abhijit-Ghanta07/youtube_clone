@@ -1,44 +1,40 @@
 import React, { useEffect, useState } from "react";
-import {
-  Card,
-  CardBody,
-  CardImg,
-  Col,
-  Container,
-  Row,
-  Spinner,
-  Stack,
-} from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Sidebar, Header } from "../includes/index";
 import { Link, useParams, ScrollRestoration } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
-import { Loading, Title, VideoList } from "../components/index";
+import { Loading, VideoList } from "../components/index";
 import { useLoaderStore } from "../services/store/store";
 import { countViews } from "../utils/countViews";
 import { Player } from "../layouts/index";
-import fetchData from "../services/api/api";
 import cl from "classnames";
-// style
-import style from "./video.module.scss";
 import { useTheme } from "../services/providers/ThemeProvider";
 import { useQuery } from "@tanstack/react-query";
-import axiosInt from "../services/axios/axios";
+import {
+  fetchRecomandations,
+  fetchVideoDetails,
+} from "../services/queries/query";
+// style
+import style from "./video.module.scss";
 
-const fetchVideo = async (id) => {
-  let { data } = axiosInt.get(`video/details?video_id=${id}`);
-  return data;
-};
 const VideoPage = () => {
   const { theme } = useTheme();
   const { id } = useParams();
+  const {
+    isSuccess,
+    data: video,
+    isPending: loading,
+  } = useQuery({
+    queryKey: ["videoDetails", id],
+    queryFn: () => fetchVideoDetails(id),
+  });
+  const { data } = useQuery({
+    queryKey: ["recomdation", { id }],
+    queryFn: () => fetchRecomandations(id),
+    enabled: isSuccess,
+  });
   const { status, startLoading, stopLoading } = useLoaderStore(
     (store) => store
   );
-  const { data: video, isPending: loading } = useQuery({
-    queryKey: ["fetchvideo", id],
-    queryFn: () => fetchVideo(id),
-  });
-
   const [videos, setVideos] = useState([]);
   useEffect(() => {
     if (loading) {
@@ -47,22 +43,9 @@ const VideoPage = () => {
       stopLoading();
     }
   }, [loading]);
-
   useEffect(() => {
-    const abort = new AbortController();
-    if (video) {
-      setTimeout(() => {
-        fetchData(`video/recommendations?video_id=${id}`, abort.signal)
-          .then((res) => {
-            setVideos(res?.videos);
-          })
-          .catch((err) => console.log(err));
-      }, 2500);
-    }
-    return () => {
-      abort.abort();
-    };
-  }, [id, video]);
+    setVideos(data?.videos);
+  }, [data]);
   return (
     <>
       <ScrollRestoration />
@@ -90,11 +73,13 @@ const VideoPage = () => {
             </div>
           </Col>
           <Col xs={12} md={4} className={style.list__wrapper}>
-            <VideoList
-              videos={videos}
-              direction="vertical"
-              title="Recomended Videos"
-            />
+            {videos ? (
+              <VideoList
+                videos={videos}
+                direction="vertical"
+                title="Recomended Videos"
+              />
+            ) : null}
           </Col>
         </Row>
       </Container>

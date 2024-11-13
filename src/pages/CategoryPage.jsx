@@ -5,26 +5,23 @@ import { VideoList } from "../components/index";
 import { useLoaderStore } from "../services/store/store";
 import { useTheme } from "../services/providers/ThemeProvider";
 import { useQuery } from "@tanstack/react-query";
-import axiosInt from "../services/axios/axios";
-const fetchCate = async (category) => {
-  let { data } = await axiosInt.get(`search/?query=${category} videos`);
-  return data;
-};
+import { fetchCategory } from "../services/queries/query";
+
 const Category = () => {
   const { theme } = useTheme();
   const { category } = useParams();
   const { startLoading, stopLoading } = useLoaderStore((store) => store);
-  const { data, isPending } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["category", category],
-    queryFn: () => fetchCate(category),
+    queryFn: () => fetchCategory(category),
   });
   useEffect(() => {
-    if (isPending) {
+    if (isLoading) {
       startLoading();
     } else {
       stopLoading();
     }
-  }, [isPending]);
+  }, [isLoading]);
   return (
     <Container
       fluid

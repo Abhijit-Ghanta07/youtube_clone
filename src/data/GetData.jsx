@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
 import { useDataStore } from "../services/store/store";
 import { useQuery } from "@tanstack/react-query";
-import axiosInt from "../services/axios/axios";
-
-const initalFetch = async () => {
-  let { data } = await axiosInt.get("search/?query=trending videos");
-  return data;
-};
+import { initalFetch } from "../services/queries/query";
+import { useEffect } from "react";
 
 const GetData = () => {
+  const storeData = useDataStore((store) => store.setData);
   const { data, isLoading } = useQuery({
     queryKey: ["videos"],
-    queryFn: () => initalFetch(),
+    queryFn: initalFetch,
   });
-  const storeData = useDataStore((store) => store.setData);
 
   useEffect(() => {
     if (data != undefined && data !== null && data?.videos.length > 0) {

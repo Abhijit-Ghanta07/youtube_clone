@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
-import fetchData from "../services/api/api";
 import { useEffect } from "react";
 import { useLoaderStore } from "../services/store/store";
 import { Loading, VideoList } from "../components/index";
 import { Col, Container, Row, Stack } from "react-bootstrap";
+import { useQuery } from "@tanstack/react-query";
+import { fetchChannel, fetchChannelVideos } from "../services/queries/query";
+
+// styles
 
 import style from "./page.module.scss";
-import axiosInt from "../services/axios/axios";
-import { useQuery } from "@tanstack/react-query";
 
-const fetchChanel = async (id) => {
-  let { data } = await axiosInt.get(`channel/details?channel_id=${id}`);
-  return data;
-};
 const ChannelPage = () => {
   const { id } = useParams();
-  const { data, isPending } = useQuery({
+  const { isSuccess, data, isPending } = useQuery({
     queryKey: ["channel", id],
-    queryFn: () => fetchChanel(id),
+    queryFn: () => fetchChannel(id),
+  });
+  const { data: recomend } = useQuery({
+    queryKey: ["recomend", { id }],
+    queryFn: () => fetchChannelVideos(id),
+    enabled: isSuccess,
   });
   const { status, startLoading, stopLoading } = useLoaderStore(
     (store) => store
@@ -36,20 +37,8 @@ const ChannelPage = () => {
   }, [isPending]);
 
   useEffect(() => {
-    const abort = new AbortController();
-    if (data) {
-      setTimeout(() => {
-        fetchData(`channel/videos?channel_id=${id}`, abort.signal)
-          .then((res) => {
-            setVideos(res?.videos);
-          })
-          .catch((err) => console.log(err));
-      }, 2500);
-    }
-    return () => {
-      abort.abort();
-    };
-  }, [id, data]);
+    setVideos(recomend?.videos);
+  }, [recomend]);
 
   return (
     <>
@@ -89,7 +78,9 @@ const ChannelPage = () => {
         </Row>
         <Row>
           <Col>
-            <VideoList videos={videos} title="Channel Videos" />
+            {videos ? (
+              <VideoList videos={videos} title="Channel Videos" />
+            ) : null}
           </Col>
         </Row>
       </Container>

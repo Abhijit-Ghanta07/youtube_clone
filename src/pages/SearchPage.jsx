@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
 import { useLoaderStore } from "../services/store/store";
 import { Loading, VideoList } from "../components";
 import { Col, Container, Row } from "react-bootstrap";
@@ -8,12 +7,8 @@ import { Header, Sidebar } from "../includes/index";
 import style from "./page.module.scss";
 import { useTheme } from "../services/providers/ThemeProvider";
 import { useQuery } from "@tanstack/react-query";
-import axiosInt from "../services/axios/axios";
+import { fetchSearch } from "../services/queries/query";
 
-const fetchSearch = async (q) => {
-  let { data } = await axiosInt.get(`search/?query=${q}`);
-  return data;
-};
 const SearchPage = () => {
   const { theme } = useTheme();
   const { query } = useParams();
