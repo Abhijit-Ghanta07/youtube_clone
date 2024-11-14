@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
-import { useDataStore } from "../../services/store/store";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import catagories from "../../constants/Constant";
 import cl from "classnames";
@@ -13,7 +12,6 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const setSearch = useDataStore((store) => store.setAsyncData);
   const [inputData, setInputData] = useState("");
   const handleClick = async () => {
     navigate(`/search/${inputData}`);
@@ -35,7 +33,7 @@ const Header = () => {
         <Col xs className="text-end">
           <button
             className={cl(theme ? style.mode__light : style.mode)}
-            onClick={(e) => {
+            onClick={() => {
               toggleTheme();
             }}
           >

@@ -2,6 +2,7 @@ import { Container, Row, Stack } from "react-bootstrap";
 import VideoCard from "../videoCard/VideoCard";
 import style from "./videolist.module.scss";
 import Title from "../titleCard/Title";
+import { Loader } from "../index";
 const VideoList = ({
   videos,
   title = "Featured Videos",
@@ -17,7 +18,7 @@ const VideoList = ({
               <VideoCard video={video} key={index} />
             ))
           ) : (
-            <p>Sorry no videos found</p>
+            <Loader />
           )}
         </Stack>
       </Row>

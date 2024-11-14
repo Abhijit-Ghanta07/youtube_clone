@@ -8,7 +8,7 @@ import cl from "classnames";
 import style from "./sidebar.module.scss";
 const Sidebar = () => {
   const { pathname } = useLocation();
-  const { theme, toogleTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <Container
       className={cl(theme ? style.sidebar__con : style.sidebar__con__dark)}

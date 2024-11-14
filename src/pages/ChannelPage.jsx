@@ -1,8 +1,5 @@
-import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useLoaderStore } from "../services/store/store";
-import { Loading, VideoList } from "../components/index";
+import { VideoList } from "../components/index";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { fetchChannel, fetchChannelVideos } from "../services/queries/query";
@@ -13,7 +10,7 @@ import style from "./page.module.scss";
 
 const ChannelPage = () => {
   const { id } = useParams();
-  const { isSuccess, data, isPending } = useQuery({
+  const { isSuccess, data } = useQuery({
     queryKey: ["channel", id],
     queryFn: () => fetchChannel(id),
   });
@@ -22,23 +19,6 @@ const ChannelPage = () => {
     queryFn: () => fetchChannelVideos(id),
     enabled: isSuccess,
   });
-  const { status, startLoading, stopLoading } = useLoaderStore(
-    (store) => store
-  );
-
-  const [videos, setVideos] = useState([]);
-
-  useEffect(() => {
-    if (isPending) {
-      startLoading();
-    } else {
-      stopLoading();
-    }
-  }, [isPending]);
-
-  useEffect(() => {
-    setVideos(recomend?.videos);
-  }, [recomend]);
 
   return (
     <>
@@ -78,13 +58,10 @@ const ChannelPage = () => {
         </Row>
         <Row>
           <Col>
-            {videos ? (
-              <VideoList videos={videos} title="Channel Videos" />
-            ) : null}
+            <VideoList videos={recomend?.videos} title="Channel Videos" />
           </Col>
         </Row>
       </Container>
-      <Loading status={status} />
     </>
   );
 };

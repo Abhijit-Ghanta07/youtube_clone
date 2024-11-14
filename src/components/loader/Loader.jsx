@@ -8,7 +8,7 @@ const Loader = () => {
     <>
       <div className={style.loader__wrapper}>
         <Spinner animation="border" role="status"></Spinner>
-        <h3>Loading...</h3>
+        <h3 className="text-light">Loading...</h3>
       </div>
     </>
   );

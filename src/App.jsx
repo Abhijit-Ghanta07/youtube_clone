@@ -49,6 +49,7 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <RouterProvider router={router} />
+        <GetData />
       </Suspense>
     </>
   );
